@@ -19,21 +19,21 @@ Your app should now be running on [localhost:8080](http://localhost:8080/).
 
 ## Updating the data
 The data that feeds Pug is inside the `data` folder. There you can change:
-- **Your basic info:** name, birth date, contact info.
-- **Experience:** most recent ones, and past experiences.
-- **Sections:** to add new sections (e.g. Education, Projects) just update this file, and make sure the new section id matches the `section-container(id)` parameter:
+- [index.js](/data/index.js): change your basic info, such as name, birth date, contact info and some other website configs.
+- [experiences.js](/data/experiences.js): list of past and most recent experiences.
+- [sections.js](/data/sections.js): to add new sections (e.g. Education, Projects) just update this file, and make sure the new section id matches the `section-container(id)` parameter:
 ```javascript
 {
     id: 'section_id',
     label: 'New section',
-},
+}
 ```
 ```pug
 +section-container('section_id')
 ```
 
 ## Updating the theme
-To change the colors, fonts and so on, you should change the `tailwind.config.js` file.
+To change the colors, fonts and so on, you should change the [tailwind.config.js](/tailwind.config.js) file.
 
 ## Deploying
 I deployed my website on DigitalOcean. I pay 4 bucks/month for a basic Droplet.
