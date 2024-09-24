@@ -1,0 +1,8 @@
+{
+    "watch": [
+        "index.js",
+        "app/",
+        "data/"
+    ],
+    "ext": "js, css, pug"
+}

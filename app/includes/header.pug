@@ -1,0 +1,21 @@
+include mixins
+
+- var resumeUrl = 'assets/static/resume_sample.pdf';
+
++header
+    +header-logo('assets/images/your-logo-here.png')
+    nav(class='hidden gap-12 lg:flex')
+        each section in sections
+            +menu-item(section.label, 'javascript:pageController.goToItemContent("' + section.id + '")')
+        +primary-button('Resume', resumeUrl)(class='mr-8 lg:mr-12')
+    div.block.z-20.pr-4(class='md:pr-8 lg:hidden')
+        input.block.absolute.cursor-pointer.opacity-0.z-30(type='checkbox' class='peer/menu w-[40px] h-[32px]')
+        +menu-icon-row
+        +menu-icon-row
+        +menu-icon-row
+        ul.shadow-2xl.absolute.px-8.pt-32.right-0.transition-transform.h-screen.top-0(class='bg-background-offset origin-[0%_0%] w-[300px] translate-x-full translate-y-0 peer-checked/menu:transform-none')
+            each section in sections
+                li.pt-8
+                    +menu-item(section.label, 'javascript:pageController.goToItemContent("' + section.id + '")')
+            li.pt-16.text-center
+                +primary-button('Resume', resumeUrl)

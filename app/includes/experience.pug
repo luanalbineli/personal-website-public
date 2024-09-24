@@ -1,0 +1,31 @@
+include mixins
+
++section-container('experience')
+	+title('Experience')
+	ol.relative.border-s.border-gray-200.mt-12.ml-4
+		each experience in experienceList
+			li.mb-12.ms-8
+				div.absolute.flex.items-center.justify-center.w-6.h-6.bg-white.rounded-full.-start-3.ring-8.ring-white
+					img.rounded-full(src=`./assets/images/${experience.image.url}` alt=experience.image.alt title=experience.image.title)
+				h2.flex.items-center.mb-1.text-xl.font-semibold
+					=experience.text.position
+					span.ml-1.text-secondary='@ ' + experience.text.title
+				div.block.mb-6.text-normal.leading-none.text-offset-text.tracking-wider=experience.text.period
+				p.text-base= experience.text.content
+				if experience.achievements
+					ul.mt-4
+						each achievement in experience.achievements
+							li.mb-2.text-sm(class='before:content-["▹"] before:mr-2 before:text-secondary before:text-lg')=achievement + '.'
+				+tech-chip-container
+					each tech in experience.tech
+						+tech-chip(tech)
+				if experience.link
+					+primary-button(experience.link.text, experience.link.url)(class='mt-4 !ml-0')
+	div
+		+subtitle('Past jobs')
+		ul
+			each pastExperience in pastExperienceList
+				li.mb-2.text-xl.font-semibold(class='before:content-["▹"] before:mr-2 before:text-secondary before:text-lg')=`${pastExperience.text.title} (${pastExperience.text.period}) - ${pastExperience.text.position}`
+					+tech-chip-container(class='!mt-1 mb-6')
+						each tech in pastExperience.tech
+							+tech-chip(tech)

@@ -1,0 +1,26 @@
+include mixins
+
+- function calculateAge(birthdayDate) {
+-	const today = new Date();
+-	var age = today.getFullYear() - birthdayDate.getFullYear();
+-	const monthDiff = today.getMonth() - birthdayDate.getMonth();
+-	if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthdayDate.getDate())) {
+-		age--;
+-	}
+-	return age;
+-}
+
++section-container('about_me')(class='!mt-0')
+	+title('About me')
+	div.grid.grid-cols-12
+		div.col-span-12.pb-16(class='lg:col-span-4 lg:pb-0')
+			each aboutText in about
+				p.text-base.mt-4(class='first:mt-0')=aboutText
+		div.col-span-12(class='lg:col-span-4 flex')
+			div.m-auto.relative(class='max-w-[200px] after:border-2 xl:max-w-[300px] after:w-full after:h-[110%] after:block after:absolute after:left-[-5%] after:top-[-5%] after:rounded-sm after:z-[-1]')
+				img.rounded-sm(src='./assets/images/profile-pic.webp')
+		div.col-span-12.mt-16(class='lg:col-span-4 lg:mt-0')
+			h5.font-bold Details
+			+detail-block('Name:', profile.name)(class='!mt-6')
+			+detail-block('Age:', calculateAge(profile.birthdayDate))
+			+detail-block('Location:', profile.location)

@@ -1,0 +1,49 @@
+mixin title(title)
+	h2(class='text-5xl text-primary font-bold mb-8')&attributes(attributes)=title
+
+mixin subtitle(subtitle)
+	h2(class='text-2xl text-primary font-bold mb-8')&attributes(attributes)=subtitle
+
+mixin section-container(id)
+	section.mt-48(id=id)&attributes(attributes)
+		block
+
+mixin detail-block(label, text)
+	div(class='mt-2')&attributes(attributes)
+		span.text-offset-text=label
+		p.font-bold=text
+
+mixin tech-chip-container
+	div.flex.flex-wrap.mt-4&attributes(attributes)
+		block
+
+mixin tech-chip(text)
+	div.flex.justify-center.items-center.mr-2.my-1.py-1.px-2.bg-secondary.rounded-full.border.border-secondary.bg-opacity-25
+		span.text-xs.font-normal.font-code(class='leading-[normal]')=text
+
+mixin primary-button(text, href)
+	button.font-bold.border.text-secondary.border-secondary.px-4.py-2.rounded-md.ml-4.transition-bg-text-color(class=' hover:bg-secondary hover:text-primary-text')&attributes(attributes)
+		a.text-sm.font-code.tracking-wider(href=href target='_blank')=text
+
+mixin contact-option(href)
+	a.transition-color(href=href target='_blank', class='hover:text-secondary')
+		if block
+			block
+
+- var checkedSpan = 'peer-checked/menu:bg-secondary peer-checked/menu:opacity-100 peer-checked/menu:rotate-45 peer-checked/menu:translate-x-[-2px] peer-checked/menu:translate-y-[-3px]';
+- var checkedSpanSecond = 'peer-checked/menu:[&:nth-last-child(2)]:-rotate-45 peer-checked/menu:[&:nth-last-child(2)]:-rotate-45 peer-checked/menu:[&:nth-last-child(2)]:translate-x-[0] peer-checked/menu:[&:nth-last-child(2)]:translate-y-[-1px]'
+- var checkedSpanThird = 'peer-checked/menu:[&:nth-last-child(3)]:opacity-0 peer-checked/menu:[&:nth-last-child(3)]:rotate-0 peer-checked/menu:[&:nth-last-child(3)]:scale-[0.2]'
+
+mixin menu-icon-row
+	span.relative.block.bg-white.rounded-sm.transition-menu-icon-row.z-10(class=`w-[34px] h-[4px] mb-[5px] origin-[4px_0px] first:origin-[0%_0%] [&:nth-last-child(2)]:origin-[0%_100%] ${checkedSpan} ${checkedSpanSecond} ${checkedSpanThird}`)
+
+mixin menu-item(label, href)
+	a.text-lg.font-semibold.transition-color.flex.items-center.tracking-wider(class='hover:text-secondary' href=href)=label
+
+mixin header
+	header.fixed.top-0.bg-background.transition-top.w-full.shadow-lg.shadow-none.flex.items-center.justify-between.z-10&attributes(attributes)
+		block
+
+mixin header-logo(src, href = '/')
+	a.p-4.inline-flex.items-center(href=href class='md:p-8 lg:px-12 gap-2.5' aria-label='logo')
+		img.h-12(src=src)&attributes(attributes)
